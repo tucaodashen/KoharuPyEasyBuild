@@ -25,4 +25,4 @@ jobs:
     - name: Run script
       run: |
         dir
-        python testfiles/hellowrold.py
+        python testfiles/helloworld.py
