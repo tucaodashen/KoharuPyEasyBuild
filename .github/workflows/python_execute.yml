@@ -25,4 +25,4 @@ jobs:
     - name: Run script
       run: |
         dir
-        python testfiles/helloworld.py
+        python SetUpEnvironment.py
