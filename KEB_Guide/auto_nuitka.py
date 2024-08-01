@@ -2,10 +2,23 @@
 Nuitka的自动处理类
 ꒰ঌ(🎀 ᗜ`v´ᗜ 🌸)໒꒱💈✅
 """
+# ToDo:
+# - 完善Nuika的操作
+# - 写TUI
+# - 有关文件的复制
+# - Pyinstaller的支持
+# - 环境的自动搭建
+# - 多语言化
+# - 错误处理
+# - 冗余代码清理
+
+
 import AutoDep
 import get_dep
 import analysis_NDEP
 import dependence_analysis
+import os
+import shutil
 
 import gettext
 from rich import print
@@ -30,6 +43,9 @@ class AutoNuitka():
         self.error_list = []
         self.installed_pypi_dic = AutoDep.get_site_packages_info()
         self.ns_pypi_mapping_list = []
+        self.site_dir = analysis_NDEP.get_site_packages_path()
+        self.path_list = []
+        self.target_path = "D:\copytest"
 
 
         self.analyse_te_dic = {
@@ -54,7 +70,7 @@ class AutoNuitka():
     def get_pypi_package(self):
         self._1pass_pypi_package = []
         self.pypi_package = []
-        self._stdlib = AutoDep.get_standard_library_names()
+        self._stdlib = AutoDep.get_lib_files().keys()
         for i in self.non_custom_package:
             if i not in self.buildin_package:
                 self._1pass_pypi_package.append(i)
@@ -128,13 +144,91 @@ class AutoNuitka():
         print(need_copy_list)
 
         # 转回对应文件夹
+        nonspack = []
         for i in need_copy_list:
             for dicc in self.ns_pypi_mapping_list:
                 if i == str(list(dicc.keys())[0]).lower():
                     print(str(i)+str(dicc))
-        print(need_copy_list)
+                    nonspack.append(i)
 
-        #待修复：会将所有依赖项均视为非标准包，需要重新判断
+                    for fi in list(list(dicc.values())[0]):
+                        print(self.site_dir+"/"+str(fi))
+                        if os.path.exists(self.site_dir+"/"+str(fi)):
+                            print("exit")
+                            self.path_list.append(self.site_dir+"/"+str(fi))
+                        else:
+                            print(self.site_dir+"/"+str(list(dicc.keys())[0]).replace("-","_"))
+                            if os.path.exists(self.site_dir+"/"+str(list(dicc.keys())[0]).replace("-","_")):
+                                print("name_exist")
+                                self.path_list.append(self.site_dir+"/"+str(list(dicc.keys())[0]).replace("-","_"))
+                            # 获取所有非标准包路径
+
+
+
+        print(nonspack)
+        for i in nonspack:
+            need_copy_list.remove(i)
+        print(need_copy_list)
+        need_copy_list += normal_list # 合并规范包
+        print(need_copy_list)
+        for spack in need_copy_list:
+            if os.path.exists(self.site_dir+"/"+str(spack)):
+                self.path_list.append(self.site_dir+"/"+str(spack))
+            else:
+                if os.path.exists(self.site_dir+"/"+str(spack).replace("-","_")):
+                    self.path_list.append(self.site_dir+"/"+str(spack).replace("-","_"))
+
+
+        self.path_list = list(set(self.path_list))
+
+
+        print(self.path_list)
+
+        self.ana_result = self.analysis_std() #所有需要的库
+        self.req_std = []
+        for i in self.ana_result:
+            if i in self._stdlib:
+                self.req_std.append(i)
+
+
+
+        self.copy_std()
+        self.copy_pypi()
+    def esay_STD(self):
+        self.all_std_lib_dir = AutoDep.get_lib_files().values()
+        for i in self.all_std_lib_dir:
+            if os.path.splitext(i)[1] != ".py" and os.path.basename(i) != "site-packages":
+                AutoDep.copy_folder(i, self.target_path + "/" + os.path.basename(i))
+            if os.path.splitext(i)[1] == ".py" and os.path.basename(i) != "site-packages":
+                shutil.copy(i,self.target_path)
+
+    def analysis_std(self):
+        all = []
+        for i in self.path_list:
+            all += AutoDep.extract_3rd_part_package_imports_from_dictionary(i)
+        return list(set(all))
+
+    def copy_std(self):
+        copy_list = []
+        for i in self.req_std:
+            if os.path.exists(AutoDep.std_lib_path()+"/"+i):
+                print(i)
+                copy_list.append(AutoDep.std_lib_path()+"/"+i)
+            else:
+                if os.path.exists(AutoDep.std_lib_path()+"/"+i+".py"):
+                    print(i+".py")
+                    copy_list.append(AutoDep.std_lib_path()+"/"+i+".py")
+        for na in copy_list:
+            if os.path.splitext(na)[1] != ".py":
+                AutoDep.copy_folder(na, self.target_path + "/" + os.path.basename(na))
+            if os.path.splitext(na)[1] == ".py":
+                shutil.copy(na,self.target_path)
+    def copy_pypi(self):
+        for path in self.path_list:
+            AutoDep.copy_folder(path,self.target_path+"/"+os.path.basename(path))
+
+
+
 
 
 
@@ -147,7 +241,7 @@ class AutoNuitka():
 
 if __name__ == "__main__":
     pass
-    path = r"D:\invisible_video_watermark"
+    path = r"D:\KoharuPyEasyBuild\build_test"
     bigpath = r"F:\solidworks\sd-webui-aki-v4.8"
     build_instance = AutoNuitka(path)
     build_instance.get_buildin_package()
@@ -159,6 +253,8 @@ if __name__ == "__main__":
     build_instance.print_error_table()
     build_instance.get_copy_list()
     #build_instance.analysis_compile_cost()
+    #build_instance.esay_STD()
+    # bild_instance.analysis_std()
 
 
 

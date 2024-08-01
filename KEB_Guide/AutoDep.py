@@ -4,6 +4,7 @@ import ast
 import subprocess
 import sys
 import glob
+import shutil
 
 
 if sys.stdin.isatty():
@@ -370,7 +371,23 @@ def get_full_dependence():
             for i in single['dependencies']:
                 print(i['key'])
 
+def copy_folder(src, dst):
+    if not os.path.exists(dst):
+        os.makedirs(dst)
+    for item in os.listdir(src):
+        s = os.path.join(src, item)
+        d = os.path.join(dst, item)
+        if os.path.isdir(s):
+            copy_folder(s, d)
+        else:
+            shutil.copy2(s, d)
+def std_lib_path():
+    # 获取当前Python解释器的路径
+    python_path = os.path.realpath(sys.executable)
+    python_dir = os.path.dirname(python_path)
+    stdlib_path = os.path.join(python_dir, 'Lib')
 
+    return stdlib_path
 
 
 
@@ -401,5 +418,9 @@ if __name__ == "__main__":
     #print(get_lib_files())
     #a = extract_3rd_part_package_imports_from_dictionary(path)
     #print(a)
-    print(get_full_dependence())
+    #print(get_full_dependence())
+    #copy_folder("D:\python_ENV\ivw\Lib\site-packages\pydeps","D:\copytest\pydeps")
+    #print(extract_3rd_part_package_imports_from_dictionary(r"D:\python_ENV\python\Lib\site-packages\tqdm"))
+    #print(get_lib_files())
+    print(std_lib_path())
 

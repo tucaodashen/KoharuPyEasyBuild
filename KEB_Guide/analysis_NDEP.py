@@ -11,7 +11,7 @@ import site
 def get_site_packages_path():
     # 获取site-packages目录的路径列表
     site_packages_paths = [p for p in site.getsitepackages()]
-    return site_packages_paths[0]
+    return site_packages_paths[1]
 
 
 def find_folders_with_top_level_txt(start_path):
@@ -44,11 +44,17 @@ def get_download_name(path):
 
 
 def get_import_name(path):
+    ina = []
     lines = []
+    fina = []
     with open(path + "\\" + "top_level.txt", 'r', encoding='utf-8') as file:
         for line in file:
             lines.append(line.strip())
-    return lines
+    for ima in lines:
+        ina += ima.split("\\")
+    for inna in ina:
+        fina += inna.split("/") # 细细地切做臊子（bushi
+    return fina
 
 
 def get_non_standard_package():
@@ -74,6 +80,7 @@ def flatten_list(nested_list):
 if __name__ == "__main__":
     for i in get_non_standard_package():
         print(i)
+    print(get_site_packages_path())
 
 
 
