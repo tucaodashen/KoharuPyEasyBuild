@@ -2,15 +2,14 @@
 Nuitka的自动处理类
 ꒰ঌ(🎀 ᗜ`v´ᗜ 🌸)໒꒱💈✅
 """
-# ToDo:
-# - 完善Nuika的操作
-# - 写TUI
-# - 有关文件的复制
-# - Pyinstaller的支持
-# - 环境的自动搭建
-# - 多语言化
-# - 错误处理
-# - 冗余代码清理
+# ToDo:完善Nuika的操作
+# ToDo:写TUI
+# ToDo:有关文件的复制
+# ToDo:Pyinstaller的支持
+# ToDo:环境的自动搭建
+# ToDo:多语言化
+# ToDo:错误处理
+# ToDo:冗余代码清理
 
 
 import AutoDep
