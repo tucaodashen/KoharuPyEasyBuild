@@ -1,9 +1,10 @@
 # KoharuEasyBuild
 
 下江小春都会用的Python静态可执行文件构建器\
-head\
+![Alt](https://github.com/tucaodashen/KoharuPyEasyBuild/blob/main/readme/edHeadI.jpg?raw=true "Ai画的")\
 中文|English
-
+![Alt](https://repobeats.axiom.co/api/embed/d4224f09be08f0118383269fca5d909676a69c0e.svg "Repobeats analytics image")
+![Alt](https://moe-counter.glitch.me/get/@:tucaodashen_Koharu?theme=rule34 "Repobeats analytics image")
 ### 为什么要使用KoharuEasyBuild(KEB)？
 1，KEB可以轻松的嵌入到你的任何GitHub项目中来实现自动化的云端构建与分发\
 2，KEB简化了Nuitka这类复杂Python构建器的参数设置，可以快速帮助新手构建出兼具效率与空间利用率的可执行文件，也可以帮助熟练使用者减少时间占用。\
@@ -63,29 +64,26 @@ conda install -r selfreq.txt
 ```
 
 安装完成后，打开你的终端软件(推荐使用Windows终端，而不是命令行主机)并全屏，防止信息显示不全。\
-使用`python CIL.py`启动编译向导
-pic1
-输入1进入编译向导，根据自身情况选择始于你的项目的编译器
-由于Pyinstaller使用过于简单，此处以Nuitka为例。
-pic2
-按照指引输入项目路径与项目入口文件路径
-随后，会让你选择预处理模式
-无预处理即为编译 ***所有*** 的第三方库
-而引导预处理则是会让你选择一部分不编译的第三方库
-无第三方库的项目选择哪一种都是可以的，此处以自动引导预处理为例
-pic3
-选择后会进行依赖分析，并让你选择不编译的库。对于占用空间小于50m的库，不编译可以显著加快速度并在一定程度上减少空间占用。而对大于50m的库进行编译可以显著减少空间占用。
-这需要各位以自身经验为准
-pic4
-然后为选择插件，一般而言输入 ***D***保持默认即可，但若是发现自己未使用相应库插件却启用(如你并未使用PyQt，Pyqt5的颜色却变绿),可输入相应序号关闭。
-pic5
-随后为附加数据文件，一般而言自动检测以足够使用，若未完全检测到位。可以使用Zip文件附加，附加逻辑为直接将Zip解压并覆盖根目录。
-
-之后进入附加选项，根据自身需要填写即可，但我建议保留控制太，Nuitka关闭控制台有可能出现无法运行的问题。
-
-编译器也根据自身情况选择即可
-
-最后填写输出路径与输出类型
+使用`python CIL.py`启动编译向导\
+![Alt](https://github.com/tucaodashen/KoharuPyEasyBuild/blob/main/readme/pic1.png?raw=true "Pic1")\
+输入1进入编译向导，根据自身情况选择始于你的项目的编译器\
+由于Pyinstaller使用过于简单，此处以Nuitka为例。\
+![Alt](https://github.com/tucaodashen/KoharuPyEasyBuild/blob/main/readme/pic2.png?raw=true "Pic2")\
+按照指引输入项目路径与项目入口文件路径\
+随后，会让你选择预处理模式\
+无预处理即为编译 ***所有*** 的第三方库\
+而引导预处理则是会让你选择一部分不编译的第三方库\
+无第三方库的项目选择哪一种都是可以的，此处以自动引导预处理为例\
+![Alt](https://github.com/tucaodashen/KoharuPyEasyBuild/blob/main/readme/pic3.png?raw=true "Pic3")\
+选择后会进行依赖分析，并让你选择不编译的库。对于占用空间小于50m的库，不编译可以显著加快速度并在一定程度上减少空间占用。而对大于50m的库进行编译可以显著减少空间占用。\
+这需要各位以自身经验为准\
+![Alt](https://github.com/tucaodashen/KoharuPyEasyBuild/blob/main/readme/pic4.png?raw=true "Pic4")\
+然后为选择插件，一般而言输入 ***D***保持默认即可，但若是发现自己未使用相应库插件却启用(如你并未使用PyQt，Pyqt5的颜色却变绿),可输入相应序号关闭。\
+![Alt](https://github.com/tucaodashen/KoharuPyEasyBuild/blob/main/readme/pic5.png?raw=true "Pic5")\
+随后为附加数据文件，一般而言自动检测以足够使用，若未完全检测到位。可以使用Zip文件附加，附加逻辑为直接将Zip解压并覆盖根目录。\
+之后进入附加选项，根据自身需要填写即可，但我建议保留控制太，Nuitka关闭控制台有可能出现无法运行的问题。\
+编译器也根据自身情况选择即可\
+最后填写输出路径与输出类型\
 若选择可执行文件，输出为文件夹。若选择嵌入包，输出则为压缩包。
 
 ### GithubAction嵌入包的使用
