@@ -5,7 +5,7 @@ ChatGPT写的
 别问，问就是我这个笨比不会写递归（
 ꒰ঌ(⸝⸝ ↀ ᯅ ↀ⸝⸝)໒꒱
 """
-
+import analysis_NDEP
 
 def find_dependencies(packages, target_key):
     def recurse(package_key, result_set):
@@ -34,6 +34,10 @@ def find_dependencies(packages, target_key):
     recurse(target_key, result_set)
     # 将结果集转换为列表并返回
     return list(result_set)
+
+
+if __name__ == '__main__':
+    print(find_dependencies(analysis_NDEP.get_full_dependence(), "pillow"))
 
 
 

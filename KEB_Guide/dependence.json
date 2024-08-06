@@ -292,7 +292,7 @@
             {
                 "key": "pyinstaller",
                 "package_name": "pyinstaller",
-                "installed_version": "5.13.0",
+                "installed_version": "6.9.0",
                 "required_version": ">=5.8.0"
             }
         ]
@@ -678,14 +678,6 @@
     },
     {
         "package": {
-            "key": "enum34",
-            "package_name": "enum34",
-            "installed_version": "1.1.10"
-        },
-        "dependencies": []
-    },
-    {
-        "package": {
             "key": "exceptiongroup",
             "package_name": "exceptiongroup",
             "installed_version": "1.1.3"
@@ -776,7 +768,7 @@
             {
                 "key": "enum34",
                 "package_name": "enum34",
-                "installed_version": "1.1.10",
+                "installed_version": "?",
                 "required_version": "Any"
             },
             {
@@ -951,7 +943,7 @@
             {
                 "key": "matplotlib",
                 "package_name": "matplotlib",
-                "installed_version": "3.7.2",
+                "installed_version": "3.9.0",
                 "required_version": "~=3.0"
             },
             {
@@ -1304,6 +1296,14 @@
             "key": "importlib-resources",
             "package_name": "importlib-resources",
             "installed_version": "6.0.1"
+        },
+        "dependencies": []
+    },
+    {
+        "package": {
+            "key": "installer",
+            "package_name": "installer",
+            "installed_version": "0.7.0"
         },
         "dependencies": []
     },
@@ -2059,7 +2059,7 @@
         "package": {
             "key": "matplotlib",
             "package_name": "matplotlib",
-            "installed_version": "3.7.2"
+            "installed_version": "3.9.0"
         },
         "dependencies": [
             {
@@ -2084,13 +2084,13 @@
                 "key": "kiwisolver",
                 "package_name": "kiwisolver",
                 "installed_version": "1.4.5",
-                "required_version": ">=1.0.1"
+                "required_version": ">=1.3.1"
             },
             {
                 "key": "numpy",
                 "package_name": "numpy",
                 "installed_version": "1.25.2",
-                "required_version": ">=1.20"
+                "required_version": ">=1.23"
             },
             {
                 "key": "packaging",
@@ -2102,13 +2102,13 @@
                 "key": "pillow",
                 "package_name": "pillow",
                 "installed_version": "10.4.0",
-                "required_version": ">=6.2.0"
+                "required_version": ">=8"
             },
             {
                 "key": "pyparsing",
                 "package_name": "pyparsing",
                 "installed_version": "3.0.9",
-                "required_version": ">=2.3.1,<3.1"
+                "required_version": ">=2.3.1"
             },
             {
                 "key": "python-dateutil",
@@ -2900,6 +2900,14 @@
     },
     {
         "package": {
+            "key": "pygame",
+            "package_name": "pygame",
+            "installed_version": "2.6.0"
+        },
+        "dependencies": []
+    },
+    {
+        "package": {
             "key": "pygments",
             "package_name": "Pygments",
             "installed_version": "2.18.0"
@@ -2910,7 +2918,7 @@
         "package": {
             "key": "pyinstaller",
             "package_name": "pyinstaller",
-            "installed_version": "5.13.0"
+            "installed_version": "6.9.0"
         },
         "dependencies": [
             {
@@ -2918,6 +2926,12 @@
                 "package_name": "altgraph",
                 "installed_version": "0.17.3",
                 "required_version": "Any"
+            },
+            {
+                "key": "packaging",
+                "package_name": "packaging",
+                "installed_version": "23.1",
+                "required_version": ">=22.0"
             },
             {
                 "key": "pefile",
@@ -2928,8 +2942,8 @@
             {
                 "key": "pyinstaller-hooks-contrib",
                 "package_name": "pyinstaller-hooks-contrib",
-                "installed_version": "2023.7",
-                "required_version": ">=2021.4"
+                "installed_version": "2024.7",
+                "required_version": ">=2024.7"
             },
             {
                 "key": "pywin32-ctypes",
@@ -2949,9 +2963,22 @@
         "package": {
             "key": "pyinstaller-hooks-contrib",
             "package_name": "pyinstaller-hooks-contrib",
-            "installed_version": "2023.7"
+            "installed_version": "2024.7"
         },
-        "dependencies": []
+        "dependencies": [
+            {
+                "key": "packaging",
+                "package_name": "packaging",
+                "installed_version": "23.1",
+                "required_version": ">=22.0"
+            },
+            {
+                "key": "setuptools",
+                "package_name": "setuptools",
+                "installed_version": "69.5.1",
+                "required_version": ">=42.0.0"
+            }
+        ]
     },
     {
         "package": {
@@ -3447,6 +3474,36 @@
             "installed_version": "1.3.0"
         },
         "dependencies": []
+    },
+    {
+        "package": {
+            "key": "sounddevice",
+            "package_name": "sounddevice",
+            "installed_version": "0.4.7"
+        },
+        "dependencies": [
+            {
+                "key": "cffi",
+                "package_name": "cffi",
+                "installed_version": "1.15.1",
+                "required_version": ">=1.0"
+            }
+        ]
+    },
+    {
+        "package": {
+            "key": "soundfile",
+            "package_name": "soundfile",
+            "installed_version": "0.12.1"
+        },
+        "dependencies": [
+            {
+                "key": "cffi",
+                "package_name": "cffi",
+                "installed_version": "1.15.1",
+                "required_version": ">=1.0"
+            }
+        ]
     },
     {
         "package": {

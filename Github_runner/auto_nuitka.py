@@ -337,7 +337,7 @@ class AutoNuitka:
             if self.is_console:
                 pass
             else:
-                self.attached_args += "--windows-console-mode=attach "
+                self.attached_args += "--windows-console-mode=disable "
             if self.is_debug:
                 self.attached_args += "--debug "
             if self.l_memory:

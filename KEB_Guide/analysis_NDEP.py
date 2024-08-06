@@ -6,6 +6,9 @@
 
 import os
 import site
+import json
+import subprocess
+import sys
 
 
 def get_site_packages_path():
@@ -76,6 +79,19 @@ def flatten_list(nested_list):
             # 如果项目不是列表，则直接添加到结果列表中
             flat_list.append(item)
     return flat_list
+
+def get_full_dependence():
+    # 使用subprocess.run来执行命令
+    result = subprocess.run(sys.executable + " -m pipdeptree -j", shell=True, stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE, text=True)
+    # 输出命令的返回值
+    data = result.stdout
+    with open("dependence.json", "w", encoding='utf-8') as file:
+        file.write(data)
+
+    with open('dependence.json') as json_file:
+        json_data = json.load(json_file)
+    return json_data
 
 if __name__ == "__main__":
     for i in get_non_standard_package():
