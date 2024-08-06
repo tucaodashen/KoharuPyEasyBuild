@@ -25,7 +25,7 @@ class auto_pyinstaller:
         else:
             console_arg = "-w"
         if self.is_debug:
-            debug_arg = "-d"
+            debug_arg = "--debug "
         else:
             debug_arg = ""
         of_arg = ""
@@ -38,8 +38,6 @@ class auto_pyinstaller:
         print(command)
         AutoDep.run_command(command)
     def after(self):
-        if os.path.exists(os.path.split(self.icon_file)[1]):
-            os.remove(os.path.split(self.icon_file)[1])
         #print(os.getcwd()+"/dist/"+os.path.splitext(os.path.basename(self.pythonfile))[0])
         st = AutoDep.copy_path(os.getcwd()+"/dist/"+os.path.splitext(os.path.basename(self.pythonfile))[0],self.target_path,'overwrite')
         if st == 1:

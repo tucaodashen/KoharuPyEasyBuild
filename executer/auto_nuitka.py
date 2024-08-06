@@ -292,6 +292,7 @@ class AutoNuitka:
 
 
     def compile_start(self,complier,Uac,debug,lowmemory,console,icon,lto):
+        self.autoadd = " "
         self.is_console = console
         self.UAC = Uac
         self.compiler = complier
@@ -337,7 +338,7 @@ class AutoNuitka:
             if self.is_console:
                 pass
             else:
-                self.attached_args += "--windows-console-mode=disable "
+                self.attached_args += "--windows-console-mode=attach "
             if self.is_debug:
                 self.attached_args += "--debug "
             if self.l_memory:
@@ -349,7 +350,7 @@ class AutoNuitka:
             if self.LTO == "N":
                 self.attached_args += "--lto=no "
             self.end_args = self.entrance
-            self.command = f"{self.head}{self.c_args}{self.display_args}{self.inc_arg}{self.p_args}{self.plugin_args}{self.attached_args}{self.end_args}"
+            self.command = f"{self.head}{self.c_args}{self.display_args}{self.inc_arg}{self.p_args}{self.plugin_args}{self.attached_args}{self.end_args}{self.autoadd}"
             original_string = self.command
             cleaned_string = ''.join([line for line in original_string.splitlines()])
             print(cleaned_string)
@@ -393,7 +394,7 @@ class AutoNuitka:
             if self.LTO == "N":
                 self.attached_args += "--lto=no "
             self.end_args = self.entrance
-            self.command = f"{self.head}{self.c_args}{self.display_args}{self.inc_arg}{self.p_args}{self.plugin_args}{self.attached_args}{self.end_args}"
+            self.command = f"{self.head}{self.c_args}{self.display_args}{self.inc_arg}{self.p_args}{self.plugin_args}{self.attached_args}{self.end_args}{self.autoadd}"
             original_string = self.command
             cleaned_string = ''.join([line for line in original_string.splitlines()])
             print(cleaned_string)

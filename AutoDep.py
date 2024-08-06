@@ -24,6 +24,14 @@ error_list = []
 
 from rich import print
 
+
+def zip_directory(folder_path, zip_name):
+    with zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(folder_path):
+            for file in files:
+                file_path = os.path.join(root, file)
+                zipf.write(file_path, arcname=os.path.relpath(file_path, start=folder_path))
+
 NuPluginFilter = {  #nuitka的插件映射表
     "anti-bloat": [],
     "data-files": [],
@@ -604,6 +612,8 @@ def run_command(command):
 
         for line in process.stdout:
             print(line, end='')  # 实时打印输出，end='' 防止自动换行
+
+
 
         # 等待命令执行完成
         process.wait()

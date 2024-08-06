@@ -1,0 +1,14 @@
+{
+  "attached_data": "",
+  "console": true,
+  "debug": false,
+  "disabled_pypi": [
+    "tqdm"
+  ],
+  "enabled_plugin": [],
+  "generator_type": "nuitka",
+  "icon": "",
+  "main_entrance": "app.py",
+  "mode": "auto_p",
+  "uac": false
+}
