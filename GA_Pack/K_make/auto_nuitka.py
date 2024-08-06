@@ -4,12 +4,7 @@ Nuitka的自动处理类
 """
 import sys
 
-# ToDo:完善Nuika的操作
-# ToDo:写TUI
-# ToDo:环境的自动搭建
-# ToDo:多语言化
-# ToDo:错误处理
-# ToDo:冗余代码清理
+
 
 
 import AutoDep
