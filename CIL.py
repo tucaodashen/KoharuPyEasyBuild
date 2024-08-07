@@ -6,6 +6,7 @@ import auto_nuitka
 import AutoDep
 import sys
 import os
+import time
 
 from rich import print
 from rich.console import Console
@@ -14,6 +15,9 @@ import environment
 _ = gettext.gettext
 
 console = Console()
+
+
+
 
 
 def assembly_github_action(project_path, iconpath, attached_data, target_path):
@@ -48,6 +52,7 @@ def assembly_github_action(project_path, iconpath, attached_data, target_path):
     shutil.copy("helloworld.py","GA_Pack/K_make")
 
     AutoDep.zip_directory("GA_Pack", target_path + "/GA_Pack.zip")
+    shutil.rmtree("GA_Pack")
 
 
 def compile_guide():

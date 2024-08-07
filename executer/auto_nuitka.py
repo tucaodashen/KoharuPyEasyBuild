@@ -3,7 +3,7 @@ Nuitka的自动处理类
 ꒰ঌ(🎀 ᗜ`v´ᗜ 🌸)໒꒱💈✅
 """
 import sys
-
+import time
 
 
 
@@ -18,6 +18,15 @@ from rich import print
 from rich.console import Console
 from rich.table import Column, Table
 
+
+def cost_time(func):
+    def fun(*args, **kwargs):
+        t = time.perf_counter()
+        result = func(*args, **kwargs)
+        print(f'func {func.__name__} cost time:{time.perf_counter() - t:.8f} s')
+        return result
+
+    return fun
 
 class AutoNuitka:
     def __init__(self, project_path ,main_entrance ,mode='auto',command = ''):
@@ -285,7 +294,7 @@ class AutoNuitka:
             self.included_py.append(os.path.splitext(i)[0])
 
 
-
+    @cost_time
     def compile_start(self,complier,Uac,debug,lowmemory,console,icon,lto):
         self.autoadd = " "
         self.is_console = console

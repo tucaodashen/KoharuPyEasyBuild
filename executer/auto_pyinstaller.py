@@ -1,9 +1,18 @@
 import shutil
-import subprocess
+import time
 import sys
 import os
 import AutoDep
 
+
+def cost_time(func):
+    def fun(*args, **kwargs):
+        t = time.perf_counter()
+        result = func(*args, **kwargs)
+        print(f'func {func.__name__} cost time:{time.perf_counter() - t:.8f} s')
+        return result
+
+    return fun
 
 
 class auto_pyinstaller:
@@ -18,6 +27,8 @@ class auto_pyinstaller:
     def github_action(self):
         pass
 
+
+    @cost_time
     def compile_start(self):
         #os.mkdir("Pyinstaller")
         if self.is_console:
