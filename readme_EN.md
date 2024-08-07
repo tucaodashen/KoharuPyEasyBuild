@@ -3,7 +3,7 @@
   
 Everyone who is not as dumb as Koharu can use it to compile python files easily.
 ![Alt](https://github.com/tucaodashen/KoharuPyEasyBuild/blob/main/readme/edHeadI.jpg?raw=true "Ai画的") 
-中文|English  
+[中文](https://github.com/tucaodashen/KoharuPyEasyBuild/blob/main/README.md)|[English](https://github.com/tucaodashen/KoharuPyEasyBuild/blob/main/readme_EN.md)  
 ![Alt](https://repobeats.axiom.co/api/embed/d4224f09be08f0118383269fca5d909676a69c0e.svg "Repobeats analytics image")  
 ![Alt](https://moe-counter.glitch.me/get/@:tucaodashen_Koharu?theme=rule34 "Repobeats analytics image")  
 ### What's the feature of KoharuEasyBuild(KEB)？  
